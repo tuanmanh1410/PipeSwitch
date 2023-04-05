@@ -7,7 +7,7 @@ import task.common as util
 MODEL_NAME = 'resnet152'
 
 def import_data(batch_size):
-    filename = './dog.jpg'
+    filename = './PipeSwitch/task/dog.jpg'
 
     # Download an example image from the pytorch website
     if not os.path.isfile(filename):
