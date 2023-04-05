@@ -4,7 +4,7 @@ import sys
 from scripts.common.util import RunDocker
 
 def main():
-    with RunDocker('pipeswitch:ready_model') as rd:
+    with RunDocker('pipeswitch:ready_model', 'warm_up') as rd:
         # Start the server: ready_model
         rd.run('python PipeSwitch/scripts/environment/container_run_warmup.py')
         
