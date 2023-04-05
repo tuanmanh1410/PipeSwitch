@@ -7,7 +7,7 @@ import task.common as util
 MODEL_NAME = 'resnet152'
 
 def import_data(batch_size):
-    filename = 'dog.jpg'
+    filename = './dog.jpg'
 
     # Download an example image from the pytorch website
     if not os.path.isfile(filename):
@@ -18,6 +18,8 @@ def import_data(batch_size):
             urllib.URLopener().retrieve(url, filename)
         except: 
             urllib.request.urlretrieve(url, filename)
+    else:
+        print("Image File already exists")
 
     # sample execution (requires torchvision)
     from PIL import Image
