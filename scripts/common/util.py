@@ -16,9 +16,9 @@ class RunRemoteRepo:
         os.system("ssh %s '%s'" % (self.server['id'], cmd))
 
 class RunDocker:
-    def __init__(self, image):
+    def __init__(self, image, extend):
         self.image = image
-        self.name = 'pipeswitch'
+        self.name = 'pipeswitch-%s' % extend
 
     def __enter__(self):
         os.system('docker run --name %s --rm -it -d --gpus all -w /workspace %s bash' % (self.name, self.image))

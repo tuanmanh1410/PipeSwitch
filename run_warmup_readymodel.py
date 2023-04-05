@@ -1,9 +1,9 @@
 import os 
 
 class RunDocker:
-    def __init__(self, image):
+    def __init__(self, image, extend):
         self.image = image
-        self.name = 'pipeswitch'
+        self.name = 'pipeswitch-%s' % extend
 
     def __enter__(self):
         os.system('docker run --name %s --rm -it -d --gpus all -w /workspace %s bash' % (self.name, self.image))
@@ -19,9 +19,10 @@ class RunDocker:
 
 
 def main():
-    with RunDocker('pipeswitch:ready_model') as rd:
+    with RunDocker('pipeswitch:ready_model', 'test') as rd:
         # Start the server: ready_model
         rd.run('python PipeSwitch/scripts/environment/container_run_warmup.py')
+        # rd.run('pwd; ls')
 
 if __name__ == '__main__':
     main()
